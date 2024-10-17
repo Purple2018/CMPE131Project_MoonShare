@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    background-color: #f0f0f0; /* Light background */
+}
+
+.sidebar {
+    background-color: #4CAF50; /* Sidebar color */
+    width: 250px;
+    color: white;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar h2 {
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: white; /* Text color */
+    text-decoration: none; /* Remove underline */
+    font-size: 18px;
+    padding: 10px;
+    display: block; /* Make the entire area clickable */
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    background-color: #f3f3f3; /* Main content background */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.new-document-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Space between items */
+    margin-top: 20px; /* Space above the grid */
+}
+
+.document-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.document-card:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.document-image {
+    width: 100%;
+    height: 100px; /* Fixed height for images */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    object-fit: cover; /* Ensure image covers the area */
+}
+
+.document-title {
+    padding: 10px 0;
+    color: #333; /* Text color */
+}
+
+.new-document {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e0e0e0; /* Background color for new document card */
+    border: 2px dashed #4CAF50; /* Dashed border */
+    border-radius: 10px;
+    height: 150px; /* Fixed height */
+}
+
+.new-document-text {
+    font-size: 20px; /* Font size for new document text */
+    color: #4CAF50; /* Text color */
+}
+
+.settings-icon {
+    width: 30px; /* Width of the icon */
+    height: 30px; /* Height of the icon */
+    background-color: #4CAF50; /* Background color */
+    clip-path: polygon(50% 0%, 61% 35%, 100% 35%, 68% 57%, 79% 100%, 50% 74%, 21% 100%, 32% 57%, 0% 35%, 39% 35%); /* Create a gear shape */
+    display: inline-block; /* Make it inline with text */
+    margin-right: 8px; /* Space between icon and text */
+}
+

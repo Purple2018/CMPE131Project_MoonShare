@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('moon.png'); /* Same background as login page */
+    background-size: cover;
+    background-position: center;
+}
+
+.glass-container {
+    width: 400px; /* Slightly wider for the profile form */
+    height: 450px;
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.1); /* Transparent white background */
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    overflow: hidden; /* Ensure child elements stay inside the rounded box */
+    backdrop-filter: blur(8px); /* Increase blur for stronger effect */
+    -webkit-backdrop-filter: blur(8px); /* Safari support */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-box {
+    max-width: 350px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px; /* Add padding inside the box */
+}
+
+h2 {
+    color: #000000;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+input, textarea {
+    padding: 10px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #ffffff;
+    font-size: 13px;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #ffffff;
+}
+
+textarea {
+    resize: none;
+    height: 80px;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: white;
+}
+
+button {
+    background: #fff;
+    color: #000000;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background: transparent;
+    color: white;
+    outline: 1px solid #fff;
+}
+
+.secondary-button {
+    background: transparent;
+    color: white;
+    outline: 1px solid #fff;
+    margin-top: 10px;
+}
+
+.secondary-button:hover {
+    background: #fff;
+    color: #000000;
+}
+
+p {
+    font-size: 15px;
+    color: #fff;
+    margin-top: 20px;
+}

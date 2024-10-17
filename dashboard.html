@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - ShareMoon</title>
+    <link rel="stylesheet" href="dashboardstyles.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>ShareMoon</h2>
+        <ul>
+            <li><a href="profile.html">User profile</a></li>
+            <li><a href="#">Project</a></li>
+            <li><a href="#">Favorites</a></li>
+            <li><a href="#">Search</a></li>
+            <li><a href="#" onclick="logout()">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <header class="header">
+            <h1>My Documents</h1>
+        </header>
+            <button class="settings-button" onclick="openSettings()">&#x22EE;</button>
+
+        <div class="grid">
+            <div class="document-card new-document" onclick="createDocument()">
+                <p class="new-document-text">+ New</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function logout() {
+            alert('Logging out...');
+            window.location.href = "main.html";
+        }
+
+        function createDocument() {
+            alert('Create a new document!'); // Logic to create a new document
+        }
+
+        function openDocument(doc) {
+            alert('Opening ' + doc); // Logic to open the document
+        }
+        
+        function openSettings() {
+            alert('Settings Page!'); // Logic to open settings
+        }
+    </script>
+</body>
+</html>

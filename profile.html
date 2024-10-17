@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile - ShareMoon</title>
+    <link rel="stylesheet" href="profilestyles.css">
+</head>
+<body>
+    <div class="profile-container">
+        <h1>Edit Profile</h1>
+        <form id="profile-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+
+            <label for="skill">skill:</label>
+            <input type="text" placeholder="Write your skill" required></textarea>
+
+            <label for="bio">Bio:</label>
+            <textarea id="bio" placeholder="Enter a short bio" rows="2" required></textarea>
+
+
+            <button type="submit">Save</button>
+        </form>
+        <button class="back-button" onclick="goBack()">Back to Dashboard</button>
+    <script>
+        function goBack() {
+            window.location.href = "dashboard.html"; // Redirect to dashboard
+        }
+
+        document.getElementById('profile-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent page reload
+
+            const name = document.getElementById('name').value;
+            const bio = document.getElementById('bio').value;
+            const skill = document.getElementById('skill').value;
+
+            alert(`Profile Saved!\nName: ${name}\nBio: ${bio} \nskill:${skill}`);
+            goBack(); // Redirect after saving
+        });
+    </script>
+    </div>
+</body>
+</html>
