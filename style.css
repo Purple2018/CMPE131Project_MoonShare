@@ -19,8 +19,8 @@ body {
     height: 350px;
     position: relative;
     z-index: 1;
-    background: rgb(16 0 0 / 10%);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: #0000001a(16 0 0 / 10%);
+    box-shadow: 0 4px 6px #0000001a;
     border-radius: 10px;
     border: 1px solid #fff;
 }
