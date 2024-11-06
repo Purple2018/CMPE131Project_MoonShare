@@ -7,22 +7,25 @@
     <link rel="stylesheet" href="profilestyles.css">
 </head>
 <body>
-    <div class="profile-container">
-        <h1>Edit Profile</h1>
-        <form id="profile-form">
-            <label for="name">Name:</label>
-            <input type="text" id="name" placeholder="Enter your name" required>
-
-            <label for="skill">skill:</label>
-            <input type="text" placeholder="Write your skill" required></textarea>
-
-            <label for="bio">Bio:</label>
-            <textarea id="bio" placeholder="Enter a short bio" rows="2" required></textarea>
-
-
-            <button type="submit">Save</button>
-        </form>
-        <button class="back-button" onclick="goBack()">Back to Dashboard</button>
+    <div class="glass-container">
+        <div class="profile-container">
+            <h1>Edit Profile</h1>
+            <form id="profile-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" placeholder="Enter your name" required>
+    
+                <label1 for="skill">Skill:</label1>
+                <input type="text" placeholder="Write your skill" required></textarea>
+    
+                <label1 for="bio">Bio:</label1>
+                <textarea id="bio" placeholder="Enter a short bio" rows="2" required></textarea>
+    
+    
+                <button type="submit">Save</button>
+            </form>
+            <button class="back-button" onclick="goBack()">Back to Dashboard</button>
+    </div>
+    
     <script>
         function goBack() {
             window.location.href = "dashboard.html"; // Redirect to dashboard
