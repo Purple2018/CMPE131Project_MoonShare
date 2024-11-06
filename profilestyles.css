@@ -17,35 +17,55 @@ body {
 
 .glass-container {
     width: 400px; /* Slightly wider for the profile form */
-    height: 450px;
+    height: 490px;
     position: relative;
     z-index: 1;
-    background: rgba(255, 255, 255, 0.1); /* Transparent white background */
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: #0000001a(255, 255, 255, 0); /*Transparent white background */
+    border-radius: 20px;
+    border: 1px solid #0000001a(11, 11, 11, 0.066);
     overflow: hidden; /* Ensure child elements stay inside the rounded box */
     backdrop-filter: blur(8px); /* Increase blur for stronger effect */
     -webkit-backdrop-filter: blur(8px); /* Safari support */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px #0000001a(0, 0, 0, 0.1);
+}
+
+.profile-container {
+    max-width: 380px;
+    margin: 0 auto;
+    text-align: left;
+    padding: 10px; /* Add padding inside the box */
 }
 
 .profile-box {
-    max-width: 350px;
+    max-width: 380px;
     margin: 0 auto;
     text-align: center;
     padding: 20px; /* Add padding inside the box */
 }
 
-h2 {
+label{
+    color:black;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-size: 22px;
+}
+
+label1{
+    color:white;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-size: 22px;
+}
+h1 {
     color: #000000;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 10px;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
+    margin-top: 0px;
 }
 
 input, textarea {
@@ -53,8 +73,8 @@ input, textarea {
     margin-top: 15px;
     border: none;
     border-radius: 10px;
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: rgba(150, 150, 150, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.7);
     color: #ffffff;
     font-size: 13px;
 }
