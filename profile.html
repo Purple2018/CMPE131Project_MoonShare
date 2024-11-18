@@ -13,35 +13,52 @@
             <form id="profile-form">
                 <label for="name">Name:</label>
                 <input type="text" id="name" placeholder="Enter your name" required>
-    
-                <label1 for="skill">Skill:</label1>
-                <input type="text" placeholder="Write your skill" required></textarea>
-    
-                <label1 for="bio">Bio:</label1>
+
+                <label for="skill">Skill:</label>
+                <input type="text" id="skill" placeholder="Write your skill" required>
+
+                <label for="bio">Bio:</label>
                 <textarea id="bio" placeholder="Enter a short bio" rows="2" required></textarea>
-    
-    
+
                 <button type="submit">Save</button>
             </form>
             <button class="back-button" onclick="goBack()">Back to Dashboard</button>
+        </div>
     </div>
-    
+
     <script>
+        // Function to go back to the dashboard
         function goBack() {
             window.location.href = "dashboard.html"; // Redirect to dashboard
         }
 
-        document.getElementById('profile-form').addEventListener('submit', function(e) {
+        // Load saved data from localStorage when the page loads
+        document.addEventListener("DOMContentLoaded", function() {
+            const savedName = localStorage.getItem("profileName");
+            const savedSkill = localStorage.getItem("profileSkill");
+            const savedBio = localStorage.getItem("profileBio");
+
+            if (savedName) document.getElementById("name").value = savedName;
+            if (savedSkill) document.getElementById("skill").value = savedSkill;
+            if (savedBio) document.getElementById("bio").value = savedBio;
+        });
+
+        // Save profile data to localStorage when the form is submitted
+        document.getElementById("profile-form").addEventListener("submit", function(e) {
             e.preventDefault(); // Prevent page reload
 
-            const name = document.getElementById('name').value;
-            const bio = document.getElementById('bio').value;
-            const skill = document.getElementById('skill').value;
+            const name = document.getElementById("name").value;
+            const skill = document.getElementById("skill").value;
+            const bio = document.getElementById("bio").value;
 
-            alert(`Profile Saved!\nName: ${name}\nBio: ${bio} \nskill:${skill}`);
+            // Save data to localStorage
+            localStorage.setItem("profileName", name);
+            localStorage.setItem("profileSkill", skill);
+            localStorage.setItem("profileBio", bio);
+
+            alert(`Profile Saved!\nName: ${name}\nSkill: ${skill}\nBio: ${bio}`);
             goBack(); // Redirect after saving
         });
     </script>
-    </div>
 </body>
 </html>
