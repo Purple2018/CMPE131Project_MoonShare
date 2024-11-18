@@ -36,6 +36,14 @@ body {
     z-index: -1;
 }
 
+.register-box{
+    max-width: 380px;
+    margin: 0 auto;
+    text-align: left;
+    padding: 10px;
+
+}
+
 .login-box {
     max-width: 250px;
     margin: 0 auto;
