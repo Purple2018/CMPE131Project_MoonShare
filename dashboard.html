@@ -20,14 +20,79 @@
 
     <div class="content">
         <header class="header">
-            <h1>Projects</h1>
+            <h1>Project</h1>
         </header>
-            <button class="settings-button" onclick="openSettings()">&#x22EE;</button>
-
-        <div class="grid">
-            <div class="document-card new-document" onclick="createDocument()">
+        <div class="grid" id="projectGrid">
+            <div class="document-card new-document" onclick="openProjectModal()">
                 <p class="new-document-text">+ New</p>
             </div>
+        </div>
+    </div>
+
+    <!-- Project Modal -->
+    <div class="modal" id="projectModal" style="display:none;">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeProjectModal()">&times;</span>
+            <h2>Create New Project</h2>
+            <form onsubmit="createProject(event)">
+                <label for="projectName">Project Name:</label>
+                <input type="text" id="projectName" placeholder="Enter project name" required><br><br>
+                <label for="Major">Major</label>
+                <select id="Major">
+                    <option value="Computer">Computer</option>
+                    <option value="Software">Software</option>
+                    <option value="Industrial">Industrial</option>
+                    <option value="Mechanical">Mechanical</option>
+                    <option value="Civil">Civil</option>
+                    <option value="Computer Science">Computer Science</option>
+                </select>
+
+                <label for="Level">Level:</label>
+                <select id="Level">
+                    <option value="Undergraduate">Undergraduate</option>
+                    <option value="Graduate">Graduate</option>
+                </select>
+
+                <label for="Location">Location:</label>
+                <select id="Location">
+                    <option value="In person">In person</option>
+                    <option value="Virtual">Virtual</option>
+                    <option value="Both">Both</option>
+                </select>
+
+                <label for="Skill">Skill:</label>
+                <input type="text" id="Skill" placeholder="Enter skill" required><br><br>
+
+                <label for="Duration">Duration:</label>
+                <select id="Duration">
+                    <option value="1-2 Months">1-2 Months</option>
+                    <option value="2-4 Months">2-4 Months</option>
+                    <option value="4-6 Months">4-6 Months</option>
+                    <option value="6+Months">6+Months</option>
+                </select>
+
+                <label for="Type">Type:</label>
+                <select id="Type">
+                    <option value="Survey">Survey</option>
+                    <option value="Project">Project</option>
+                </select>
+
+                <label for="Description">Description:</label>
+                <textarea id="Description" placeholder="Enter project description" rows="3" required></textarea>
+
+                <label for="Status">Status:</label>
+                <select id="Status">
+                    <option value="Archived">Archived</option>
+                    <option value="Published">Published</option>
+                    <option value="Unpublished">Unpublished</option>
+                </select>
+
+                <label for="Link to Apply">Link to Apply:</label>
+                <input type="text" id="Link to Apply" placeholder="Enter link" required><br><br>
+
+                <button type="submit">Create</button>
+                <button type="button" onclick="closeProjectModal()">Cancel</button>
+            </form>
         </div>
     </div>
 
@@ -37,17 +102,132 @@
             window.location.href = "main.html";
         }
 
-        function createDocument() {
-            alert('Create a new document!'); // Logic to create a new document
+        // Open Project Modal
+        function openProjectModal() {
+            document.getElementById("projectName").value = "";
+            document.getElementById("Major").value = "Computer"; 
+            document.getElementById("Level").value = "Undergraduate"; 
+            document.getElementById("Location").value = "In person"; 
+            document.getElementById("Skill").value = "";
+            document.getElementById("Duration").value = "1-2 Months"; 
+            document.getElementById("Type").value = "Survey"; 
+            document.getElementById("Description").value = "";
+            document.getElementById("Status").value = "Archived";
+            document.getElementById("Link to Apply").value = "";
+
+            const modal = document.getElementById("projectModal");
+            modal.style.display = "flex";
         }
 
-        function openDocument(doc) {
-            alert('Opening ' + doc); // Logic to open the document
+        // Close Project Modal
+        function closeProjectModal() {
+            const modal = document.getElementById("projectModal");
+            modal.style.display = "none";
         }
+
+        // Create Project
+        function createProject(event) {
+            event.preventDefault();
+            const projectData = {
+                name: document.getElementById("projectName").value,
+                major: document.getElementById("Major").value,
+                level: document.getElementById("Level").value,
+                location: document.getElementById("Location").value,
+                skill: document.getElementById("Skill").value,
+                duration: document.getElementById("Duration").value,
+                type: document.getElementById("Type").value,
+                description: document.getElementById("Description").value,
+                status: document.getElementById("Status").value,
+                link: document.getElementById("Link to Apply").value
+            };
+
+            let projects = JSON.parse(localStorage.getItem('projects')) || [];
+            projects.push(projectData);
+            localStorage.setItem('projects', JSON.stringify(projects));
+
+            loadProjects();
+            closeProjectModal();
+        }
+
+// Load Projects
+function loadProjects() {
+    const projects = JSON.parse(localStorage.getItem('projects')) || [];
+    const projectGrid = document.getElementById('projectGrid');
+    projectGrid.innerHTML = '<div class="document-card new-document" onclick="openProjectModal()"><p class="new-document-text">+ New</p></div>';
+
+    projects.forEach((project, index) => {
+        const projectCard = document.createElement('div');
+        projectCard.classList.add('document-card');
+
+        const projectInfoWrapper = document.createElement('div');
+        projectInfoWrapper.classList.add('project-info-wrapper');
+
+        const projectNameLink = document.createElement('a');
+        projectNameLink.classList.add('project-name');
+        projectNameLink.href = 'Doc.html'; // Link to Doc.html
+        projectNameLink.textContent = project.name;
+
+        const projectDropdown = document.createElement('div');
+        projectDropdown.classList.add('project-dropdown');
+        const optionsButton = document.createElement('button');
+        optionsButton.classList.add('options-btn');
+        optionsButton.innerHTML = '&#x22EE;';
         
-        function openSettings() {
-            alert('Settings Page!'); // Logic to open settings
+        // Add event listener to stop propagation on options button
+        optionsButton.addEventListener('click', function (e) {
+            e.stopPropagation();
+            dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+        });
+
+        const dropdownContent = document.createElement('div');
+        dropdownContent.classList.add('project-dropdown-content');
+
+        const projectDetails = document.createElement('div');
+        projectDetails.classList.add('project-details');
+        projectDetails.innerHTML = `
+            <p><strong>Major:</strong> ${project.major}</p>
+            <p><strong>Level:</strong> ${project.level}</p>
+            <p><strong>Location:</strong> ${project.location}</p>
+            <p><strong>Skill:</strong> ${project.skill}</p>
+            <p><strong>Duration:</strong> ${project.duration}</p>
+            <p><strong>Type:</strong> ${project.type}</p>
+            <p><strong>Description:</strong> ${project.description}</p>
+            <p><strong>Status:</strong> ${project.status}</p>
+            <p><strong>Link to Apply:</strong> <a href="${project.link}" target="_blank">${project.link}</a></p>
+        `;
+        dropdownContent.appendChild(projectDetails);
+
+        const deleteButton = document.createElement('button');
+        deleteButton.classList.add('delete-button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.onclick = function (e) {
+            e.stopPropagation();
+            deleteProject(index);
+        };
+        dropdownContent.appendChild(deleteButton);
+
+        projectDropdown.appendChild(optionsButton);
+        projectDropdown.appendChild(dropdownContent);
+
+        projectInfoWrapper.appendChild(projectNameLink);
+        projectInfoWrapper.appendChild(projectDropdown);
+        projectCard.appendChild(projectInfoWrapper);
+
+        projectGrid.appendChild(projectCard);
+    });
+}
+
+
+
+        // Delete Project
+        function deleteProject(index) {
+            let projects = JSON.parse(localStorage.getItem('projects')) || [];
+            projects.splice(index, 1);
+            localStorage.setItem('projects', JSON.stringify(projects));
+            loadProjects();
         }
+
+        window.onload = loadProjects;
     </script>
 </body>
 </html>
