@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collaborative Text Editor with Chat</title>
+  <link rel="stylesheet" href="Doc.css">
+</head>
+<body>
+  <div class="toolbar">
+    <button onclick="document.execCommand('bold')"><b>B</b></button>
+    <button onclick="document.execCommand('italic')"><i>I</i></button>
+    <button onclick="document.execCommand('underline')"><u>U</u></button>
+    <select onchange="document.execCommand('fontName', false, this.value)">
+      <option value="Arial">Arial</option>
+      <option value="Courier New">Courier New</option>
+      <option value="Times New Roman">Times New Roman</option>
+    </select>
+    <input type="color" onchange="document.execCommand('foreColor', false, this.value)">
+  </div>
+  <button class="back-button" onclick="goBack()">Back to Dashboard</button>
+<script>
+    function goBack() {
+      window.location.href = "dashboard.html"; // Redirect to dashboard
+        }
+</script>
+
+  <div id="editor" contenteditable="true">
+    
+  </div>
+</body>
+</html>
