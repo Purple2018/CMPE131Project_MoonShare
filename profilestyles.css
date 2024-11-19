@@ -17,16 +17,16 @@ body {
 
 .glass-container {
     width: 400px; /* Slightly wider for the profile form */
-    height: 490px;
+    height: 505px;
     position: relative;
     z-index: 1;
-    background: #0000001a(255, 255, 255, 0); /*Transparent white background */
-    border-radius: 20px;
-    border: 1px solid #0000001a(11, 11, 11, 0.066);
     overflow: hidden; /* Ensure child elements stay inside the rounded box */
     backdrop-filter: blur(8px); /* Increase blur for stronger effect */
     -webkit-backdrop-filter: blur(8px); /* Safari support */
-    box-shadow: 0 4px 6px #0000001a(0, 0, 0, 0.1);
+    background: #0000001a;
+    box-shadow: inset 0px -2px 9px 20px #0000001a;
+    border-radius: 10px;
+    border: 1px solid #fff;
 }
 
 .profile-container {
@@ -44,7 +44,7 @@ body {
 }
 
 label{
-    color:black;
+    color:#9b16e5;
     margin-top: 10px;
     margin-bottom: 0px;
     font-size: 22px;
