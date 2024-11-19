@@ -1,124 +1,262 @@
-* {
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
+/* Global styles */
 body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
     display: flex;
     height: 100vh;
-    background-color: #f0f0f0; /* Light background */
+    background-color: #f4f7fa;
 }
 
+/* Sidebar styles */
 .sidebar {
-    background-color: #4CAF50; /* Sidebar color */
     width: 250px;
+    background-color: #2f3b52;
     color: white;
     padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar h2 {
-    text-align: center;
+    margin-bottom: 20px;
 }
 
 .sidebar ul {
     list-style-type: none;
-    padding: 0;
+    padding-left: 0;
 }
 
 .sidebar ul li {
-    margin: 15px 0;
+    margin: 10px 0;
 }
 
 .sidebar ul li a {
-    color: white; /* Text color */
-    text-decoration: none; /* Remove underline */
+    color: white;
+    text-decoration: none;
     font-size: 18px;
-    padding: 10px;
-    display: block; /* Make the entire area clickable */
-    transition: background-color 0.3s;
 }
 
 .sidebar ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: #1d2733;
+    padding: 5px;
+    border-radius: 5px;
 }
 
+/* Content styles */
 .content {
-    flex: 1;
+    flex-grow: 1;
+    background-color: #f4f7fa;
     padding: 20px;
-    background-color: #f3f3f3; /* Main content background */
 }
 
+/* Header styles */
 .header {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Grid layout for project cards */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+/* New document (Create project) card */
+.new-document {
+    background-color: #d1e7fd;
+    border: 2px dashed #4CAF50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: background-color 0.3s ease;
+}
+
+.new-document:hover {
+    background-color: #c1d9fc;
+}
+
+.new-document-text {
+    font-size: 20px;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* Dim background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    width: 400px; /* Adjust width for a compact layout */
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    max-height: 70vh;
+    overflow-y: auto;
+    transition: all 0.3s ease-in-out;
+}
+
+.modal-close {
+    font-size: 30px;
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    color: #333;
+}
+
+/* Form elements */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form label {
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+form input, form select, form textarea {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+}
+
+form input:focus, form select:focus, form textarea:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+form button {
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+form button[type="button"] {
+    background-color: #f44336;
+}
+
+form button[type="button"]:hover {
+    background-color: #e53935;
+}
+
+/* Project card styles */
+.document-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: box-shadow 0.3s ease;
+}
+
+.document-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.project-info-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.new-document-button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Responsive grid */
-    gap: 20px; /* Space between items */
-    margin-top: 20px; /* Space above the grid */
-}
-
-.document-card {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.project-name {
+    font-size: 18px;
+    font-weight: bold;
     text-align: center;
+    color: #333;
+}
+
+.project-dropdown {
+    position: relative;
+}
+
+.options-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #333;
     cursor: pointer;
-    transition: transform 0.3s;
 }
 
-.document-card:hover {
-    transform: scale(1.05); /* Slight zoom on hover */
+.project-dropdown-content {
+    display: none; /* Hidden by default */
+    position: absolute;
+    right: 0;
+    top: 30px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    min-width: 120px;
+    z-index: 1; /* Make sure it's on top */
 }
 
-.document-image {
+.project-dropdown-content button {
+    background-color: white;
+    border: none;
+    color: #333;
+    padding: 12px;
     width: 100%;
-    height: 100px; /* Fixed height for images */
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    object-fit: cover; /* Ensure image covers the area */
+    text-align: left;
+    cursor: pointer;
+    border-radius: 8px;
 }
 
-.document-title {
-    padding: 10px 0;
-    color: #333; /* Text color */
+.project-dropdown-content button:hover {
+    background-color: #f1f1f1;
 }
 
-.new-document {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #e0e0e0; /* Background color for new document card */
-    border: 2px dashed #4CAF50; /* Dashed border */
-    border-radius: 10px;
-    height: 150px; /* Fixed height */
+/* Delete button in dropdown */
+.delete-button {
+    color: #f44336;
 }
 
-.new-document-text {
-    font-size: 20px; /* Font size for new document text */
-    color: #4CAF50; /* Text color */
+.delete-button:hover {
+    background-color: #f8d7da;
 }
 
-.settings-icon {
-    width: 30px; /* Width of the icon */
-    height: 30px; /* Height of the icon */
-    background-color: #4CAF50; /* Background color */
-    clip-path: polygon(50% 0%, 61% 35%, 100% 35%, 68% 57%, 79% 100%, 50% 74%, 21% 100%, 32% 57%, 0% 35%, 39% 35%); /* Create a gear shape */
-    display: inline-block; /* Make it inline with text */
-    margin-right: 8px; /* Space between icon and text */
+/* Responsiveness */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 90%;
+    }
+    .grid {
+        grid-template-columns: 1fr;
+    }
 }
-
